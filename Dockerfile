@@ -38,7 +38,7 @@ RUN cd /home/netbox/nbxd && \
 
 RUN cd /home/netbox/nbxd && \
     cp ./src/nbxd /home/netbox/bin/nbxd && \
-    cp ./src/nbx-cli /home/netbox/bin/nbxd-cli && \
+    cp ./src/nbx-cli /home/netbox/bin/nbx-cli && \
     cp ./src/nbx-tx /home/netbox/bin/nbx-tx && \
     chmod 755 /home/netbox/bin/nbxd && \
     chmod 755 /home/netbox/bin/nbx-cli && \
