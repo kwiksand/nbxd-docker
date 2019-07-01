@@ -32,12 +32,14 @@ RUN cd /home/netbox/nbxd && \
     ./autogen.sh && \
     CONFIG_SITE=$PWD/depends/x86_64-pc-linux-gnu/share/config.site ./configure --without-gui && \
     make -j$(nproc) && \
-    strip $PWD/src/nbxd $PWD/src/nbx-cli $PWD/src/nbx-tx
+    strip .//src/nbxd .//src/nbx-cli .//src/nbx-tx
 
 #RUN chmod 755 /home/netbox/bin/nbxd && \
-RUN cp $PWD/src/nbxd /home/netbox/bin/nbxd && \
-    cp $PWD/src/nbx-cli /home/netbox/bin/nbxd-cli && \
-    cp $PWD/src/nbx-tx /home/netbox/bin/nbx-tx && \
+
+RUN cd /home/netbox/nbxd && \
+    cp ./src/nbxd /home/netbox/bin/nbxd && \
+    cp ./src/nbx-cli /home/netbox/bin/nbxd-cli && \
+    cp ./src/nbx-tx /home/netbox/bin/nbx-tx && \
     chmod 755 /home/netbox/bin/nbxd && \
     chmod 755 /home/netbox/bin/nbx-cli && \
     chmod 755 /home/netbox/bin/nbx-tx && \
