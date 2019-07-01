@@ -1,0 +1,8 @@
+---
+daemon:
+  image: quay.io/kwiksand/syndicated:v2.1.0
+  ports:
+  - "51472:51472"
+  - "51473:51473"
+  volumes:
+  - /media/crypto/syndicate:/home/syndicate/.Syndicate
