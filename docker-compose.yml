@@ -1,8 +1,8 @@
 ---
 daemon:
-  image: quay.io/kwiksand/syndicated:v2.1.0
+  image: quay.io/kwiksand/nbxd:latest
   ports:
-  - "51472:51472"
-  - "51473:51473"
+  - "28734:28734"
+  - "28735:28735"
   volumes:
-  - /media/crypto/syndicate:/home/syndicate/.Syndicate
+  - /media/crypto/netbox:/home/netbox/.netbox

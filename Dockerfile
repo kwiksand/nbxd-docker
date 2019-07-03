@@ -45,7 +45,7 @@ RUN cd /home/netbox/nbxd && \
     chmod 755 /home/netbox/bin/nbx-tx && \
     rm -rf /home/netbox/nbxd
     
-EXPOSE 51472 51473
+EXPOSE 28734 28735
 
 USER root
 
