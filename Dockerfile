@@ -13,8 +13,10 @@ RUN apt-get update \
     && apt-get install -y libcurl4 libcurl4-openssl-dev \
     && apt-get install --no-install-recommends --yes \
         software-properties-common git ssh automake autoconf pkg-config libtool build-essential \
-        curl bsdmainutils \
-    && rm -rf /var/lib/apt/lists/*
+        curl bsdmainutils libsdl2-dev libsdl2-ttf-dev libpango1.0-dev \
+        libgl1-mesa-dev libopenal-dev libsndfile-dev libmpg123-dev libgmp-dev ruby-dev \
+    && rm -rf /var/lib/apt/lists/* \
+    && gem install gosu
 
 USER netbox
 
@@ -25,6 +27,7 @@ RUN cd /home/netbox && \
     ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts && \
     ssh-keyscan -t rsa bitbucket.org >> ~/.ssh/known_hosts && \
     git clone --branch $DAEMON_RELEASE https://github.com/NetboxGlobal/Netbox.Wallet.git nbxd && \
+    cp contrib/debian/examples/nbx.conf /home/netbox/netbox.conf
     cd /home/netbox/nbxd/depends && \
     make -j$(nproc)
 
@@ -56,6 +59,6 @@ RUN chmod 777 /entrypoint.sh && \
     echo "\n# Some aliases to make the netbox clients/tools easier to access\nalias nbxd='/usr/bin/nbxd -conf=/home/netbox/.netbox/netbox.conf'\nalias nbx-cli='/usr/bin/nbx-cli -conf=/home/netbox/.netbox/netbox.conf'\n\n[ ! -z \"\$TERM\" -a -r /etc/motd ] && cat /etc/motd" >> /etc/bash.bashrc && \
     echo "netbox (NBX) Cryptocoin Daemon\n\nUsage:\n nbx-cli help - List help options\n nbx-cli listtransactions - List Transactions\n\n" > /etc/motd
 
-ENTRYPOINT ["/entrypoint.sh"]
+#ENTRYPOINT ["/entrypoint.sh"]
 
-CMD ["nbxd"]
+#CMD ["nbxd"]

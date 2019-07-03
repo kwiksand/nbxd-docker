@@ -1,8 +1,9 @@
 #!/bin/bash
 
 set -e
-NETBOX_DATA=/home/netbox/.netbox
-CONFIG_FILE=netbox.conf
+NETBOX_HOME=/home/netbox
+NETBOX_DATA=$NETBOX_HOME/.netbox
+CONFIG_FILE=nbx.conf
 
 if [ -z "$1" ] || [ "$1" == "nbxd" ] || [ "$(echo "$0" | cut -c1)" == "-" ]; then
   cmd=nbxd
@@ -14,8 +15,14 @@ if [ -z "$1" ] || [ "$1" == "nbxd" ] || [ "$(echo "$0" | cut -c1)" == "-" ]; the
   fi
 
   if [ ! -f $NETBOX_DATA/$CONFIG_FILE ]; then
-    echo "$0: nbxd config ($NETBOX_DATA/$CONFIG_FILE) not found, please create.  exiting...."
-    exit 1
+    if [ -f $NETBOX_HOME/$CONFIG_FILE ];
+      echo "$0: nbxd config ($NETBOX_DATA/$CONFIG_FILE) not found, copying templated sample...."
+      #found example
+      cp $NETBOX_HOME/$CONFIG_FILE $NETBOX_DATA/$CONFIG_FILE
+    else 
+      echo "$0: nbxd config ($NETBOX_DATA/$CONFIG_FILE) not found, please create.  exiting...."
+      exit 1
+    fi
   fi
 
   chmod 700 "$NETBOX_DATA"
