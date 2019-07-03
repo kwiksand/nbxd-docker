@@ -27,7 +27,7 @@ RUN cd /home/netbox && \
     ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts && \
     ssh-keyscan -t rsa bitbucket.org >> ~/.ssh/known_hosts && \
     git clone --branch $DAEMON_RELEASE https://github.com/NetboxGlobal/Netbox.Wallet.git nbxd && \
-    cp contrib/debian/examples/nbx.conf /home/netbox/netbox.conf
+    cp contrib/debian/examples/nbx.conf /home/netbox/netbox.conf && \
     cd /home/netbox/nbxd/depends && \
     make -j$(nproc)
 
