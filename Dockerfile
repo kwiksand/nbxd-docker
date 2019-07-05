@@ -1,4 +1,4 @@
-FROM ubuntu:18.04 as builder
+libgl1-mesa-dev libopenal-dev libsndfile-dev libmpg123-dev libgmp-dev ruby-devFROM ubuntu:18.04 as builder
 
 RUN useradd -m netbox
 
@@ -13,10 +13,8 @@ RUN apt-get update \
     && apt-get install -y libcurl4 libcurl4-openssl-dev \
     && apt-get install --no-install-recommends --yes \
         software-properties-common git ssh automake autoconf pkg-config libtool build-essential \
-        curl bsdmainutils libsdl2-dev libsdl2-ttf-dev libpango1.0-dev \
-        libgl1-mesa-dev libopenal-dev libsndfile-dev libmpg123-dev libgmp-dev ruby-dev \
-    && rm -rf /var/lib/apt/lists/* \
-    && gem install gosu
+        curl bsdmainutils gosu \
+    && rm -rf /var/lib/apt/lists/*
 
 USER netbox
 
