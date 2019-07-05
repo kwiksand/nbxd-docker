@@ -1,4 +1,4 @@
-libgl1-mesa-dev libopenal-dev libsndfile-dev libmpg123-dev libgmp-dev ruby-devFROM ubuntu:18.04 as builder
+FROM ubuntu:18.04 as builder
 
 RUN useradd -m netbox
 
