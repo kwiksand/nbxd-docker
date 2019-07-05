@@ -57,6 +57,6 @@ RUN chmod 777 /entrypoint.sh && \
     echo "\n# Some aliases to make the netbox clients/tools easier to access\nalias nbxd='/usr/bin/nbxd -conf=/home/netbox/.netbox/netbox.conf'\nalias nbx-cli='/usr/bin/nbx-cli -conf=/home/netbox/.netbox/netbox.conf'\n\n[ ! -z \"\$TERM\" -a -r /etc/motd ] && cat /etc/motd" >> /etc/bash.bashrc && \
     echo "netbox (NBX) Cryptocoin Daemon\n\nUsage:\n nbx-cli help - List help options\n nbx-cli listtransactions - List Transactions\n\n" > /etc/motd
 
-#ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
 
-#CMD ["nbxd"]
+CMD ["nbxd"]
