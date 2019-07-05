@@ -5,4 +5,4 @@ daemon:
   - "28734:28734"
   - "28735:28735"
   volumes:
-  - /media/crypto/netbox:/home/netbox/.netbox
+  - /media/crypto/netbox:/home/netbox/.NetboxWallet

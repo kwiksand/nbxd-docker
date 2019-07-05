@@ -2,7 +2,7 @@
 
 set -e
 NETBOX_HOME=/home/netbox
-NETBOX_DATA=$NETBOX_HOME/.netbox
+NETBOX_DATA=$NETBOX_HOME/.NetboxWallet
 CONFIG_FILE=nbx.conf
 
 if [ -z "$1" ] || [ "$1" == "nbxd" ] || [ "$(echo "$0" | cut -c1)" == "-" ]; then
@@ -15,7 +15,7 @@ if [ -z "$1" ] || [ "$1" == "nbxd" ] || [ "$(echo "$0" | cut -c1)" == "-" ]; the
   fi
 
   if [ ! -f $NETBOX_DATA/$CONFIG_FILE ]; then
-    if [ -f $NETBOX_HOME/$CONFIG_FILE ];
+    if [ -f $NETBOX_HOME/$CONFIG_FILE ]; then
       echo "$0: nbxd config ($NETBOX_DATA/$CONFIG_FILE) not found, copying templated sample...."
       #found example
       cp $NETBOX_HOME/$CONFIG_FILE $NETBOX_DATA/$CONFIG_FILE
