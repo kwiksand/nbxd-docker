@@ -2,7 +2,7 @@ FROM ubuntu:18.04 as builder
 
 RUN useradd -m netbox
 
-ENV DAEMON_RELEASE="v3.3.0.7"
+ENV DAEMON_RELEASE="v3.4.0.1"
 #ENV DAEMON_RELEASE="master"
 #ENV GIT_COMMIT="cabbdc220a6d35fb4b00d9c4655b217b2a4d62b3"
 ENV netbox_DATA=/home/netbox/.netbox
