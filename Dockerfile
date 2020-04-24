@@ -1,4 +1,4 @@
-FROM ubuntu:18.04 as builder
+FROM ubuntu:20.04 as builder
 
 RUN useradd -m netbox
 
